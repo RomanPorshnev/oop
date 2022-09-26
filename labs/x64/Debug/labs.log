@@ -1,0 +1,3 @@
+﻿  PlayerMoving.cpp
+D:\oop c++\labs\labs\PlayerMoving.cpp(27,10): warning C4101: c: неиспользованная локальная переменная
+  labs.vcxproj -> D:\oop c++\labs\x64\Debug\labs.exe
