@@ -1,4 +1,0 @@
-﻿  FieldGenerators.cpp
-D:\oop c++\labs\labs\FieldGenerators.cpp(14,9): warning C4101: x_rand: неиспользованная локальная переменная
-D:\oop c++\labs\labs\FieldGenerators.cpp(15,9): warning C4101: y_rand: неиспользованная локальная переменная
-  labs.vcxproj -> D:\oop c++\labs\x64\Debug\labs.exe
