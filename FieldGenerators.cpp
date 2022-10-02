@@ -1,0 +1,49 @@
+﻿#include "FieldGenerators.h"
+#include <iostream>
+FieldGenerators::FieldGenerators()
+{
+}
+
+FieldGenerators::~FieldGenerators()
+{
+}
+
+void FieldGenerators::GeneratorWalls(Field *Fld)
+{
+    int k = 0;
+    int x_rand;
+    int y_rand;
+    TempMatrix = Fld->GetField();
+    do
+    {
+        x_rand = 1 + rand() % (Fld->GetM() - 1);
+        y_rand = 1 + rand() % (Fld->GetN() - 1);
+        if ((x_rand != 0) || (y_rand != 0))
+        {
+            TempMatrix[x_rand][y_rand].SetC('#');
+            k++;
+        }
+    } while (k < int(std::sqrt(Fld->GetM() * Fld->GetN())));
+    Fld->SetMatrix(TempMatrix);
+    TempMatrix = Fld->GetField();
+}
+
+void FieldGenerators::GeneratorHealth(Field* Fld)
+{
+    int k = 0;
+    int x_rand;
+    int y_rand;
+    TempMatrix = Fld->GetField();
+    do
+    {
+        x_rand = 1 + rand() % (Fld->GetM() - 2);
+        y_rand = 1 + rand() % (Fld->GetN() - 2);
+        if ((x_rand != 0) || (y_rand != 0))
+        {
+            TempMatrix[x_rand][y_rand].SetC('%');
+            k++;
+        }
+    } while (k < int(std::sqrt(Fld->GetM() * Fld->GetN())/4));
+    Fld->SetMatrix(TempMatrix);
+    TempMatrix = Fld->GetField();
+}
