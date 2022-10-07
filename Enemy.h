@@ -2,7 +2,7 @@
 class Enemy
 {
 public:
-	Enemy();
+	Enemy(int x, int y);
 	~Enemy();
 	int GetX();
 	int GetY();

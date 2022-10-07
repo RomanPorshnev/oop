@@ -1,8 +1,8 @@
 #include "Enemy.h"
 
-Enemy::Enemy()
+Enemy::Enemy(int x, int y) : x(x), y(y)
 {
-    this->hp;
+    this->hp = 3;
 }
 
 Enemy::~Enemy()

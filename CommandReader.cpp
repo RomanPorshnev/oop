@@ -1,5 +1,4 @@
 #include "CommandReader.h"
-#include "PlayerMoving.h"
 #include "Command.h"
 #include "MoveDown.h"
 #include "MoveUp.h"
@@ -13,7 +12,7 @@
 #define up 119
 #define left 97
 #define right 100
-#define kick 320
+#define kick 32
 CommandReader::~CommandReader()
 {
 }
@@ -44,11 +43,6 @@ void CommandReader::ReadFromKeyb(Field* Fld, Player* Plr, std::vector<Enemy*>& E
         command = new Kick();
     }
     if (command) {
-        command->execute(Plr, Fld, nullptr);
-        /*for (int i = 0; Enemies.size(); i++) {
-            command->execute(Plr, Fld, Enemies[i]);
-        }
-        */
-            
-    }
+        command->execute(Plr, Fld, Enemies);  
+    }      
 }

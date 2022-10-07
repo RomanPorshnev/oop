@@ -33,7 +33,7 @@ int Player::GetScore()
 
 int Player::GetAmmo()
 {
-    return this->score;
+    return this->ammo;
 }
 
 void Player::SetX(int x_new)

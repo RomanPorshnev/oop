@@ -33,9 +33,6 @@
     <ClCompile Include="FieldGenerators.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerMoving.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="InputOutput.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -81,9 +78,6 @@
     <ClCompile Include="EnemyAttack.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="EnemySpawn.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="CommandReader.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -123,9 +117,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="FieldGenerators.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerMoving.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Command.h">
@@ -168,9 +159,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="EnemyAttack.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemySpawn.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="CommandReader.h">

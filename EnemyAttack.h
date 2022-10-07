@@ -3,7 +3,7 @@
 class EnemyAttack : public EnemyEvent
 {
 public:
-	void execute(Field* Fld, Player* Plr, Enemy* Enm);
+	void execute(Field*, Player*, Enemy*);
 	~EnemyAttack();
 };
 

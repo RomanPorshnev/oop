@@ -1,12 +1,18 @@
 #include "PlayerDie.h"
 #include <iostream>
 #include <Windows.h>
-void PlayerDie::execute(Field* Field, Player* Plr, Enemy* Enm)
+#include "InputOutput.h"
+void PlayerDie::execute(Field* Fld, Player* Plr, Enemy* Enm)
 {
-	if (Plr->GetHP() == 0) {
+	if (!Plr->GetHP()) {
+		matrix = Fld->GetField();
+		matrix[Plr->GetX()][Plr->GetY()].SetC(' ');
+		Fld->SetMatrix(matrix);
+		InputOutput InOut;
+		InOut.Print(Fld, Plr);
 		std::cout << "Game Over! You Died!";
-		Sleep(3000);
-		exit(0);
+		Sleep(5000);
+		
 	}
 }
 

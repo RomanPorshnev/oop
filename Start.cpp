@@ -3,8 +3,8 @@
 #include "InputOutput.h"
 #include "Field.h"
 #include "FieldGenerators.h"
-#include "PlayerMoving.h"
 #include "Frames.h"
+#include <Windows.h>
 void Start::run()
 {
 	InputOutput InOut;
@@ -15,13 +15,12 @@ void Start::run()
 	FieldGenerators FldGen;
 	FldGen.GeneratorWalls(Fld);
 	FldGen.GeneratorHealth(Fld);
+	FldGen.GeneratorEnemies(Fld, Enemies);
 	Player *Plr = new Player();
 	Fld->SetPosPlayer(Plr);
 	Frames Frm;
-	//PlayerMoving PlrMove;
 	InOut.Print(Fld, Plr);
-	//PlrMove.Move(Fld, Plr);
-	Frm.Update(Fld, Plr);
+	Frm.Update(Fld, Plr, Enemies);
 	delete Fld;
 	delete Plr;
 }

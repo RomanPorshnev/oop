@@ -6,6 +6,6 @@ class MoveDown : public Command
 public:
 	MoveDown();
 	~MoveDown();
-	void execute(Player*, Field*, Enemy*);
+	void execute(Player*, Field*, std::vector<Enemy*>&);
 };
 

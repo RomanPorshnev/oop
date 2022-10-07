@@ -6,7 +6,7 @@ class Command
 {
 public:
 	virtual ~Command();
-	virtual void execute(Player*, Field*, Enemy*) = 0;
+	virtual void execute(Player*, Field*, std::vector<Enemy*>&) = 0;
 protected:
 	std::vector<std::vector<Cell>> TempMatrix;
 };

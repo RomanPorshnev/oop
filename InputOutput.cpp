@@ -58,12 +58,8 @@ bool InputOutput::CheckingForCorrectness(std::string input, int& x)
 
 void InputOutput::Print(Field *Fld, Player *Plr)
 {
+    system("cls");
     matrix = Fld->GetField();
-    HANDLE hd = GetStdHandle(STD_OUTPUT_HANDLE);
-    COORD cd;
-    cd.X = 0;
-    cd.Y = 0;
-    SetConsoleCursorPosition(hd, cd);
     for (int i = 0; i <= Fld->GetM() + 1; i++)
     {
         for (int j = 0; j <= Fld->GetN() + 1; j++)
@@ -86,6 +82,26 @@ void InputOutput::info()
     std::cout << "Player sign [+]\n";
     std::cout << "Wall sign [#]\n";
     std::cout << "Pill sign [%]\n";
+    std::cout << "Enemy sign [0]\n";
+    std::cout << "Bomb sign [*]\n";
+    std::cout << "Ammo sign [=]\n";
+}
+
+bool InputOutput::CheckEnemies(std::vector<Enemy*> Enemies)
+{
+    bool check = false;
+    for (int i = 0; i < Enemies.size(); i++) {
+        if (Enemies[i])
+            check = true;
+    }
+    if (check) {
+        return true;
+    }
+    else {
+        std::cout << "You win!\n";
+        Sleep(5000);
+        return false;
+    }
 }
 
 

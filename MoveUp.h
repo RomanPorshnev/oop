@@ -6,6 +6,6 @@ class MoveUp : public Command
 public:
 	MoveUp();
 	~MoveUp();
-	void execute(Player*, Field*, Enemy*);
+	void execute(Player*, Field*, std::vector<Enemy*>&);
 };
 

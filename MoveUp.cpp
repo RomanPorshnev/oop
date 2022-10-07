@@ -2,6 +2,7 @@
 #include "GetHealthPlayer.h"
 #include "GetAmmoPlayer.h"
 #include "LooseHealthPlayer.h"
+#include "PlayerDie.h"
 MoveUp::MoveUp()
 {
 }
@@ -10,7 +11,7 @@ MoveUp::~MoveUp()
 {
 }
 
-void MoveUp::execute(Player* Plr, Field* Fld, Enemy* Enm)
+void MoveUp::execute(Player* Plr, Field* Fld, std::vector<Enemy*>& Enemies)
 {
     TempMatrix = Fld->GetField();
     Event* ev = nullptr;
@@ -40,6 +41,8 @@ void MoveUp::execute(Player* Plr, Field* Fld, Enemy* Enm)
     }
     if (ev) {
         ev->execute(Fld, Plr, nullptr);
+        Event* ev_plr_die = new PlayerDie();
+        ev_plr_die->execute(Fld, Plr, nullptr);
     }
     TempMatrix[Plr->GetX()][Plr->GetY()].SetC(c);
     Fld->SetMatrix(TempMatrix);

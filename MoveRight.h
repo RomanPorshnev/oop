@@ -6,6 +6,6 @@ class MoveRight : public Command
 public:
 	MoveRight();
 	~MoveRight();
-	void execute(Player*, Field*, Enemy*);
+	void execute(Player*, Field*, std::vector<Enemy*>&);
 };
 
