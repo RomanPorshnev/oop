@@ -1,6 +1,5 @@
 #pragma once
 #include "Player.h"
-#include "Cell.h"
 #include "Field.h"
 #include "Enemy.h"
 class Event

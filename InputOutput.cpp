@@ -99,6 +99,9 @@ bool InputOutput::CheckEnemies(std::vector<Enemy*> Enemies)
     }
     else {
         std::cout << "You win!\n";
+        for (int i = 0; i < Enemies.size(); i++) {
+            delete Enemies[i];
+        }
         Sleep(5000);
         return false;
     }
