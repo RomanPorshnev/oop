@@ -134,7 +134,9 @@
     <ClCompile Include="EnemyAttack.cpp" />
     <ClCompile Include="EnemyDie.cpp" />
     <ClCompile Include="EnemyEvent.cpp" />
+    <ClCompile Include="EnemyEventFactory.cpp" />
     <ClCompile Include="Event.cpp" />
+    <ClCompile Include="EventFactory.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="FieldGenerators.cpp" />
     <ClCompile Include="Frames.cpp" />
@@ -154,6 +156,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerDie.cpp" />
     <ClCompile Include="PlayerEvent.cpp" />
+    <ClCompile Include="PlayerEventFactory.cpp" />
     <ClCompile Include="Start.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -164,7 +167,9 @@
     <ClInclude Include="EnemyAttack.h" />
     <ClInclude Include="EnemyDie.h" />
     <ClInclude Include="EnemyEvent.h" />
+    <ClInclude Include="EnemyEventFactory.h" />
     <ClInclude Include="Event.h" />
+    <ClInclude Include="EventFactory.h" />
     <ClInclude Include="Field.h" />
     <ClInclude Include="FieldGenerators.h" />
     <ClInclude Include="Frames.h" />
@@ -183,6 +188,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerDie.h" />
     <ClInclude Include="PlayerEvent.h" />
+    <ClInclude Include="PlayerEventFactory.h" />
     <ClInclude Include="Start.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

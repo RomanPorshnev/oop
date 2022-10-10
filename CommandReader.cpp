@@ -7,7 +7,6 @@
 #include "Kick.h"
 #include <iostream>
 #include <Windows.h>
-
 #define down 115
 #define up 119
 #define left 97
@@ -23,7 +22,6 @@ void CommandReader::ReadFromKeyb(Field* Fld, Player* Plr, std::vector<Enemy*>& E
     if (key == down)
     {
         command = new MoveDown();
-
     }
 
     if (key == up)

@@ -1,11 +1,7 @@
 #include "MoveDown.h"
+#include "PlayerEventFactory.h"
+#include "EventFactory.h"
 #include "Event.h"
-#include "GetHealthPlayer.h"
-#include "GetAmmoPlayer.h"
-#include "LooseHealthPlayer.h"
-#include "PlayerDie.h"
-#include <iostream>
-#include <Windows.h>
 MoveDown::MoveDown()
 {
 }
@@ -16,10 +12,9 @@ MoveDown::~MoveDown()
 
 void MoveDown::execute(Player* Plr, Field* Fld, std::vector<Enemy*>& Enemies)
 {
-    //std::cout << "yes";
-    //Sleep(1000);
     TempMatrix = Fld->GetField();
     Event* ev = nullptr;
+    EventFactory* ev_factory = new PlayerEventFactory();
     char c = TempMatrix[Plr->GetX()][Plr->GetY()].GetC();
     if (TempMatrix[Plr->GetX() + 1][Plr->GetY()].GetBoarderPos()) {
         TempMatrix[Plr->GetX()][Plr->GetY()].SetC(' ');
@@ -32,23 +27,23 @@ void MoveDown::execute(Player* Plr, Field* Fld, std::vector<Enemy*>& Enemies)
     else if (TempMatrix[Plr->GetX() + 1][Plr->GetY()].GetHealthPos()) {
         TempMatrix[Plr->GetX()][Plr->GetY()].SetC(' ');
         Plr->SetX(Plr->GetX() + 1);
-        ev = new GetHealthPlayer();
+        ev = ev_factory->CreateGetHealthPlayer();
     }
     else if (TempMatrix[Plr->GetX() + 1][Plr->GetY()].GetAmmoPos()) {
         TempMatrix[Plr->GetX()][Plr->GetY()].SetC(' ');
         Plr->SetX(Plr->GetX() + 1);
-        ev = new GetAmmoPlayer();
+        ev = ev_factory->CreateGetAmmoPlayer();
     }
     else if (TempMatrix[Plr->GetX() + 1][Plr->GetY()].GetBombPos()) {
         TempMatrix[Plr->GetX()][Plr->GetY()].SetC(' ');
         Plr->SetX(Plr->GetX() + 1);
-        ev = new LooseHealthPlayer();
+        ev = ev_factory->CreateLooseHealthPlayer();
     }
     TempMatrix[Plr->GetX()][Plr->GetY()].SetC(c);
     Fld->SetMatrix(TempMatrix);
     if (ev) {
         ev->execute(Fld, Plr, nullptr);
-        Event* ev_plr_die = new PlayerDie();
+        Event* ev_plr_die = ev_factory->CreatePlayerDie();
         ev_plr_die->execute(Fld, Plr, nullptr);
     }
 }
