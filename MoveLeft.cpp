@@ -3,22 +3,25 @@
 #include "GetAmmoPlayer.h"
 #include "LooseHealthPlayer.h"
 #include "PlayerDie.h"
-#include "EventFactory.h"
-#include "PlayerEventFactory.h"
+
 MoveLeft::MoveLeft()
 {
+    ev = nullptr;
+    ev_factory = new PlayerEventFactory();
+    ev_plr_die = nullptr;
 }
 
 MoveLeft::~MoveLeft()
 {
+    delete ev;
+    delete ev_factory;
+    delete ev_plr_die;
 }
 
 void MoveLeft::execute(Player* Plr, Field* Fld, std::vector<Enemy*>& Enemies)
 {
     TempMatrix = Fld->GetField();
     char c = TempMatrix[Plr->GetX()][Plr->GetY()].GetC();
-    Event* ev = nullptr;
-    EventFactory* ev_factory = new PlayerEventFactory();
     if (TempMatrix[Plr->GetX()][Plr->GetY() - 1].GetBoarderPos()) {
         TempMatrix[Plr->GetX()][Plr->GetY()].SetC(' ');
         Plr->SetY(Fld->GetN());
@@ -46,7 +49,7 @@ void MoveLeft::execute(Player* Plr, Field* Fld, std::vector<Enemy*>& Enemies)
     Fld->SetMatrix(TempMatrix);
     if (ev) {
         ev->execute(Fld, Plr, nullptr);
-        Event* ev_plr_die = ev_factory->CreatePlayerDie();
+        ev_plr_die = ev_factory->CreatePlayerDie();
         ev_plr_die->execute(Fld, Plr, nullptr);
     }
 }

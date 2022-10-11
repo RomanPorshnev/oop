@@ -27,6 +27,7 @@ void InputOutput::Asking()
         std::getline(std::cin, input, '\n');
         std::cout << '\n';
     } while (!CheckingForCorrectness(input, n));
+    system("cls");
 }
 
 bool InputOutput::CheckingForCorrectness(std::string input, int& x)

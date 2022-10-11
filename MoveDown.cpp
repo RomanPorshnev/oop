@@ -1,20 +1,26 @@
 #include "MoveDown.h"
-#include "PlayerEventFactory.h"
-#include "EventFactory.h"
-#include "Event.h"
+#include "GetHealthPlayer.h"
+#include "GetAmmoPlayer.h"
+#include "LooseHealthPlayer.h"
+#include "PlayerDie.h"
+
 MoveDown::MoveDown()
 {
+    ev = nullptr;
+    ev_factory = new PlayerEventFactory();
+    ev_plr_die = nullptr;
 }
 
 MoveDown::~MoveDown()
 {
+    delete ev;
+    delete ev_factory;
+    delete ev_plr_die;
 }
 
 void MoveDown::execute(Player* Plr, Field* Fld, std::vector<Enemy*>& Enemies)
 {
     TempMatrix = Fld->GetField();
-    Event* ev = nullptr;
-    EventFactory* ev_factory = new PlayerEventFactory();
     char c = TempMatrix[Plr->GetX()][Plr->GetY()].GetC();
     if (TempMatrix[Plr->GetX() + 1][Plr->GetY()].GetBoarderPos()) {
         TempMatrix[Plr->GetX()][Plr->GetY()].SetC(' ');
@@ -43,7 +49,7 @@ void MoveDown::execute(Player* Plr, Field* Fld, std::vector<Enemy*>& Enemies)
     Fld->SetMatrix(TempMatrix);
     if (ev) {
         ev->execute(Fld, Plr, nullptr);
-        Event* ev_plr_die = ev_factory->CreatePlayerDie();
+        ev_plr_die = ev_factory->CreatePlayerDie();
         ev_plr_die->execute(Fld, Plr, nullptr);
     }
 }

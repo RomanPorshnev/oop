@@ -7,5 +7,6 @@ public:
 	~PlayerDie();
 private:
 	std::vector<std::vector<Cell>> matrix;
+	InputOutput InOut;
 };
 

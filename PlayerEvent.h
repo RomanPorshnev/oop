@@ -1,5 +1,6 @@
 #pragma once
 #include "Event.h"
+#include "InputOutput.h"
 class PlayerEvent : public Event
 {
 public:

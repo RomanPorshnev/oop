@@ -1,5 +1,4 @@
 #include "CommandReader.h"
-#include "Command.h"
 #include "MoveDown.h"
 #include "MoveUp.h"
 #include "MoveLeft.h"
@@ -7,18 +6,23 @@
 #include "Kick.h"
 #include <iostream>
 #include <Windows.h>
+
 #define down 115
 #define up 119
 #define left 97
 #define right 100
 #define kick 32
+
+CommandReader::CommandReader() {
+    command = nullptr;
+}
 CommandReader::~CommandReader()
 {
+    delete command;
 }
 
 void CommandReader::ReadFromKeyb(Field* Fld, Player* Plr, std::vector<Enemy*>& Enemies, int key)
 {
-    Command* command = nullptr;
     if (key == down)
     {
         command = new MoveDown();
