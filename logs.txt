@@ -1,0 +1,18 @@
+[Level 2] The game started
+[Level 1] The player made a move to the down
+[Level 1] The player made a move to the down
+[Level 1] The player made a move to the right
+[Level 1] The player made a move to the right
+[Level 1] The player made a move to the right
+[Level 1] The player made a move to the down
+[Level 1] The player made a move to the down
+[Level 1] The player made a move to the left
+[Level 1] The player made a move to the down
+[Level 1] The enemy has lost health
+[Level 1] The enemy has lost health
+[Level 1] The enemy has lost health
+[Level 1] The enemy died
+[Level 1] The player got score
+[Level 1] The player made a move to the down
+[Level 1] The player got ammo
+[Level 2] The game finished

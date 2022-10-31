@@ -129,7 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Command.cpp" />
-    <ClCompile Include="CommandReader.cpp" />
+    <ClCompile Include="ReadFromKeyb.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyAttack.cpp" />
     <ClCompile Include="EnemyDie.cpp" />
@@ -149,6 +149,7 @@
     <ClCompile Include="LooseHealthEnemy.cpp" />
     <ClCompile Include="LooseHealthPlayer.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Message.cpp" />
     <ClCompile Include="MoveDown.cpp" />
     <ClCompile Include="MoveLeft.cpp" />
     <ClCompile Include="MoveRight.cpp" />
@@ -157,12 +158,15 @@
     <ClCompile Include="PlayerDie.cpp" />
     <ClCompile Include="PlayerEvent.cpp" />
     <ClCompile Include="PlayerEventFactory.cpp" />
+    <ClCompile Include="Singleton.cpp" />
+    <ClCompile Include="Singleton_FileLogger.cpp" />
     <ClCompile Include="Start.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Command.h" />
-    <ClInclude Include="CommandReader.h" />
+    <ClInclude Include="ReadFromKeyb.h" />
+    <ClInclude Include="ControllerObservable.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyAttack.h" />
     <ClInclude Include="EnemyDie.h" />
@@ -181,6 +185,7 @@
     <ClInclude Include="LooseAmmoPlayer.h" />
     <ClInclude Include="LooseHealthEnemy.h" />
     <ClInclude Include="LooseHealthPlayer.h" />
+    <ClInclude Include="Message.h" />
     <ClInclude Include="MoveDown.h" />
     <ClInclude Include="MoveLeft.h" />
     <ClInclude Include="MoveRight.h" />
@@ -189,6 +194,8 @@
     <ClInclude Include="PlayerDie.h" />
     <ClInclude Include="PlayerEvent.h" />
     <ClInclude Include="PlayerEventFactory.h" />
+    <ClInclude Include="Singleton.h" />
+    <ClInclude Include="Singleton_FileLogger.h" />
     <ClInclude Include="Start.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -9,6 +9,7 @@ MoveLeft::MoveLeft()
     ev = nullptr;
     ev_factory = new PlayerEventFactory();
     ev_plr_die = nullptr;
+    singleton = singleton->GetInstance();
 }
 
 MoveLeft::~MoveLeft()
@@ -16,10 +17,12 @@ MoveLeft::~MoveLeft()
     delete ev;
     delete ev_factory;
     delete ev_plr_die;
+    singleton = singleton->GetInstance();
 }
 
 void MoveLeft::execute(Player* Plr, Field* Fld, std::vector<Enemy*>& Enemies)
 {
+    singleton->logging(6);
     TempMatrix = Fld->GetField();
     char c = TempMatrix[Plr->GetX()][Plr->GetY()].GetC();
     if (TempMatrix[Plr->GetX()][Plr->GetY() - 1].GetBoarderPos()) {
@@ -34,16 +37,22 @@ void MoveLeft::execute(Player* Plr, Field* Fld, std::vector<Enemy*>& Enemies)
         TempMatrix[Plr->GetX()][Plr->GetY()].SetC(' ');
         Plr->SetY(Plr->GetY() - 1);
         ev = ev_factory->CreateGetHealthPlayer();
+        singleton->logging(2);
     }
     else if (TempMatrix[Plr->GetX()][Plr->GetY() - 1].GetAmmoPos()) {
         TempMatrix[Plr->GetX()][Plr->GetY()].SetC(' ');
         Plr->SetY(Plr->GetY() - 1);
         ev = ev_factory->CreateGetAmmoPlayer();
+        singleton->logging(3);
     }
     else if (TempMatrix[Plr->GetX()][Plr->GetY() - 1].GetBombPos()) {
         TempMatrix[Plr->GetX()][Plr->GetY()].SetC(' ');
         Plr->SetY(Plr->GetY() - 1);
         ev = ev_factory->CreateLooseHealthPlayer();
+        singleton->logging(4);
+    }
+    else if (TempMatrix[Plr->GetX()][Plr->GetY() - 1].GetWallPos()) {
+        singleton->logging(5);
     }
     TempMatrix[Plr->GetX()][Plr->GetY()].SetC(c);
     Fld->SetMatrix(TempMatrix);

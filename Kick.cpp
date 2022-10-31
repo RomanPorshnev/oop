@@ -16,6 +16,7 @@ Kick::Kick()
 	ev_get_score_plr = nullptr;
 	ev_enemy_die = nullptr;
 	ev_loose_ammo_plr = nullptr;
+	singleton = singleton->GetInstance();
 }
 
 Kick::~Kick()
@@ -31,6 +32,7 @@ Kick::~Kick()
 
 void Kick::execute(Player* Plr, Field* Fld, std::vector<Enemy*>& Enemies)
 {
+	hit = false;
 	for (int i = 0; i < Enemies.size(); i++) {
 		ev_loose_hp_enemy = nullptr;
 		TempMatrix = Fld->GetField();
@@ -39,15 +41,22 @@ void Kick::execute(Player* Plr, Field* Fld, std::vector<Enemy*>& Enemies)
 			ev_loose_hp_enemy = ev_factory_enm->CreateLooseHealthEnemy();
 		}
 		if (ev_loose_hp_enemy && Enemies[i]) {
+			hit = true;
 			ev_loose_hp_enemy->execute(Fld, Plr, Enemies[i]);
+			singleton->logging(9);
 			ev_get_score_plr = ev_factory_plr->CreateGetScorePlayer();
 			ev_get_score_plr->execute(Fld, Plr, Enemies[i]);
 			ev_enemy_die = ev_factory_enm->CreateEnemyDie();
 			ev_enemy_die->execute(Fld, Plr, Enemies[i]);
 			if (!Enemies[i]->GetHP()) {
+				singleton->logging(11);
+				singleton->logging(10);
 				Enemies[i] = nullptr;
 			}
 		}
+	}
+	if (!hit) {
+		singleton->logging(12);
 	}
 	ev_loose_ammo_plr = ev_factory_plr->CreateLooseAmmoPlayer();
 	ev_loose_ammo_plr->execute(Fld, Plr, nullptr);

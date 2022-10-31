@@ -10,6 +10,7 @@ public:
 	void execute(Player*, Field*, std::vector<Enemy*>&);
 	bool direction(Player*, Field*, Enemy*, int v, int h);
 private:
+	bool hit;
 	EventFactory* ev_factory_enm;
 	EventFactory* ev_factory_plr;
 	Event* ev_loose_hp_enemy;

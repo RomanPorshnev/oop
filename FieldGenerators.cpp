@@ -4,7 +4,6 @@
 #include "EnemyAttack.h"
 #include "Field.h"
 #include "Player.h"
-#include "InputOutput.h"
 #include "Player.h"
 #include "Windows.h"
 FieldGenerators::FieldGenerators()
@@ -51,7 +50,6 @@ void FieldGenerators::GeneratorHealth(Field* Fld)
             k++;
         }
     } while (k < int(std::sqrt(Fld->GetM() * Fld->GetN())/4));
-    TempMatrix[3][3].SetC('=');
     Fld->SetMatrix(TempMatrix);
     TempMatrix = Fld->GetField();
 }
@@ -80,7 +78,6 @@ void FieldGenerators::GeneratorEnemies(Field* Fld, std::vector<Enemy*>& Enemies)
 
 void FieldGenerators::GeneratorBombs(Field* Fld, std::vector<Enemy*> Enemies, Player* Plr, clock_t& start, clock_t end)
 {
-    InputOutput InOut;
     if ((end - start) / CLOCKS_PER_SEC > 3) {
         for (int i = 0; i < Enemies.size(); i++) {
             if (Enemies[i]) {
@@ -90,6 +87,8 @@ void FieldGenerators::GeneratorBombs(Field* Fld, std::vector<Enemy*> Enemies, Pl
             }
         }
         InOut.Print(Fld, Plr);
+        InOut.PrintLogsToConsole();
+        InOut.PrintLogsToFile();
         start = end;
     }
 }
